@@ -15,24 +15,6 @@ sudo chown -R root:root /usr/local/lib/site-blocker
 sudo ln -s /usr/local/lib/site-blocker/block.sh /usr/local/bin/block
 ```
 
-
-## Configuration (Optional)
-
-To run the blocker in the background without being suspended by password prompts, you must configure `sudo` to allow this specific command without a password.
-
-### Open the sudo configuration:
-
-```bash 
-sudo visudo
-```
-
-```bash
-# Replace "username" with your Linux username
-username **ALL**=(**ALL**) **NOPASSWD**: /usr/local/bin/block
-```
-### Save and exit
-You can now run the blocker in the background using f.e `block socials 60 &`.
-
 ## Usage
 
 Run the command followed by the block profile name and the duration in minutes.
