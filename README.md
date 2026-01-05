@@ -10,13 +10,8 @@ NOTE: Because the script will interact with `/etc/hosts`, it'll require sudo acc
 3. Run the following commands to move the files to the system library and create the executable link:
 
 ```bash
-# Move the project to the system library
 sudo mv site-blocker /usr/local/lib/
-
-# Set root ownership
 sudo chown -R root:root /usr/local/lib/site-blocker
-
-# Create a symlink in the binary directory
 sudo ln -s /usr/local/lib/site-blocker/block.sh /usr/local/bin/block
 ```
 
@@ -31,10 +26,8 @@ To run the blocker in the background without being suspended by password prompts
 sudo visudo
 ```
 
-### Add the following line to the end of the file 
-(replace `username` with your actual Linux username):
-
-```text 
+```bash
+# Replace "username" with your Linux username
 username **ALL**=(**ALL**) **NOPASSWD**: /usr/local/bin/block
 ```
 ### Save and exit
