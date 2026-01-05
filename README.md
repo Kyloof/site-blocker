@@ -25,17 +25,20 @@ sudo ln -s /usr/local/lib/site-blocker/block.sh /usr/local/bin/block
 
 To run the blocker in the background without being suspended by password prompts, you must configure `sudo` to allow this specific command without a password.
 
-## Open the sudo configuration:
+### Open the sudo configuration:
 
-```bash sudo visudo
+```bash 
+sudo visudo
 ```
 
-## Add the following line to the end of the file (replace `username` with your actual Linux username):
+### Add the following line to the end of the file 
+(replace `username` with your actual Linux username):
 
-```text username **ALL**=(**ALL**) **NOPASSWD**: /usr/local/bin/block
-
+```text 
+username **ALL**=(**ALL**) **NOPASSWD**: /usr/local/bin/block
 ```
-## Save and exit. You can now run the blocker in the background using `block socials 60 &`.
+### Save and exit
+You can now run the blocker in the background using f.e `block socials 60 &`.
 
 ## Usage
 
@@ -43,48 +46,50 @@ Run the command followed by the block profile name and the duration in minutes.
 
 **Syntax:**
 
-```bash block [profile_name] [minutes]
-
+```bash
+block [profile_name] [minutes]
 ```
 
 **Examples:**
 
-```bash # Block 'socials' for 60 minutes block socials 60
+```bash 
+# Block 'socials' for 60 minutes 
+block socials 60
 
 # Block 'news' for 30 minutes in the background
-
 block news 30 &
-
 ```
 
 To stop a background block early, bring it to the foreground with `fg` and press `Ctrl+C`, or identify the process ID and kill it. The script will automatically clean up and restore the hosts file upon exit.
 
-## Creating Block Profiles
+### Creating Block Profiles
 
-Block profiles are text files located in `/usr/local/lib/site-blocker/block_options/`. To add a new list of sites to block:
+Block profiles are text files located in `/usr/local/lib/site-blocker/block_profiles/`. To add a new list of sites to block:
 
-## Create a new file in the options directory (requires root permissions):
+#### Create a new file in the options directory (requires root permissions):
 
-```bash sudo vim /usr/local/lib/site-blocker/block_options/my_new_list
-
+```bash
+sudo vim /usr/local/lib/site-blocker/block_profiles/my_new_list
 ```
 
-## Add the domains you wish to block pointing to `127.0.0.1`.
+#### Add the domains you wish to block pointing to `127.0.0.1`
 
 **Format:**
 
-```text **127**.0.0.1 [www.facebook.com](https://www.facebook.com) **127**.0.0.1 [www.youtube.com](https://www.youtube.com) **127**.0.0.1 [www.instagram.com](https://www.instagram.com) **127**.0.0.1 [www.reddit.com](https://www.reddit.com) **127**.0.0.1 [www.wp.pl](https://www.wp.pl)
-
+```text 
+127.0.0.1 www.facebook.com
+127.0.0.1 www.youtube.com
+127.0.0.1 www.instagram.com 
 ```
 
 ## Uninstallation
 
 To remove the tool from your system:
 
-```bash # Remove the symlink sudo rm /usr/local/bin/block
+```bash 
+# Remove the symlink 
+sudo rm /usr/local/bin/block
 
 # Remove the source files
-
 sudo rm -rf /usr/local/lib/site-blocker
-
 ```
