@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if [ "$EUID" -ne 0 ]; then
-  exec sudo "$0" "$@"
-fi
-
 # Input
 REAL_PATH=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$REAL_PATH")
